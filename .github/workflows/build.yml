@@ -19,7 +19,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22' # Ensure Node.js is compatible with your React Native version
+          node-version: '22'
+          # Ensure Node.js is compatible with your React Native version
 
       - name: Install Dependencies
         run: npm install
