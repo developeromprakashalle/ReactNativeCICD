@@ -40,6 +40,11 @@ jobs:
       - name: Run Tests
         run: npm run test:coverage
 
+      - name: Run SonarQube Scanner
+        run: npx sonar-scanner
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: Grant Execute Permission to Gradle Wrapper
         run: chmod +x android/gradlew
 
