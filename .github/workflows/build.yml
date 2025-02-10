@@ -38,7 +38,7 @@ jobs:
       #  run: npm run lint
 
       - name: Run Tests
-        run: npm test:coverage
+        run: npm run test:coverage
 
       - name: Grant Execute Permission to Gradle Wrapper
         run: chmod +x android/gradlew
