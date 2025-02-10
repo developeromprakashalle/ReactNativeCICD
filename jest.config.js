@@ -2,7 +2,7 @@ module.exports = {
   preset: 'react-native',
   collectCoverage: true,
   collectCoverageFrom: [
-    './App.js',
+    'src/**/*.{js,jsx}',
     '!src/**/*.test.{js,jsx}',
     '!src/setupTests.js',
   ],
