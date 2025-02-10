@@ -23,7 +23,7 @@ jobs:
           java-version: '17'
 
       - name: 22.13.1
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4 
         with:
           node-version: '22' # Set to your required Node.js version
           cache: 'npm'
@@ -38,7 +38,8 @@ jobs:
       #  run: npm run lint
 
       - name: Run Tests
-        run: npm test:coverage
+        run: npm test -- --coverage
+        #npm test:coverage
 
       - name: Run SonarQube Scanner
         run: npx sonar-scanner
