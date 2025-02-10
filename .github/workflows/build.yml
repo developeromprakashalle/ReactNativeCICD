@@ -38,7 +38,7 @@ jobs:
       #  run: npm run lint
 
       - name: Run Tests
-        run: npm run test:coverage
+        run: npm test:coverage
 
       - name: Run SonarQube Scanner
         run: npx sonar-scanner
