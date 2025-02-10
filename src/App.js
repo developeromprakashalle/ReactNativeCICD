@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { StatusBar } from 'react-native';
+import {StyleSheet, Text, View, StatusBar} from 'react-native';
 import React from 'react';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>Hello World JS</Text>
+      <Text>Hello React Native Android</Text>
+      <Text>Hello React Native iOS</Text>
     </View>
   );
 }
