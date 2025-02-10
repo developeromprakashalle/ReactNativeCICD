@@ -31,8 +31,8 @@ jobs:
       - name: Verify Node.js Version
         run: node -v # Ensures correct Node version is used
 
-      - name: Install Dependencies
-        run: npm ci
+      #- name: Install Dependencies
+      #  run: npm ci
 
       #- name: Lint Code
       #  run: npm run lint
