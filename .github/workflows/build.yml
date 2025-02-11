@@ -113,7 +113,7 @@ jobs:
         if: inputs.buildType == 'DEBUG'
         uses: actions/upload-artifact@v4
         with:
-          name: ReactNativeCICD
+          name: ReactNativeCICD-Debug
           path: |
             android/app/build/outputs/apk/debug/app.apk
 
@@ -131,6 +131,6 @@ jobs:
         if: inputs.buildType == 'RELEASE'
         uses: actions/upload-artifact@v4
         with:
-          name: ReactNativeCICD
+          name: ReactNativeCICD-Release
           path: |
             android/app/build/outputs/apk/release/app.apk
