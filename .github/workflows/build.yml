@@ -41,6 +41,7 @@ on:
 jobs:
   android-build:
     name: Build Android APK
+    #virtual machine (runner) ubuntu-latest Default, recommended for most workflows where your job will execute.
     runs-on: ubuntu-latest
     if: inputs.platform == 'ANDROID'
 
