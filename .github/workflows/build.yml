@@ -105,13 +105,16 @@ jobs:
           cd android 
           ./gradlew assembleDebug bundleDebug
 
+      - name: Rename APK
+        run: mv android/app/build/outputs/apk/debug/app-debug.apk android/app/build/outputs/apk/debug/app.apk
+
       - name: Publish DEBUG Artifact for Android
         if: inputs.buildType == 'DEBUG'
         uses: actions/upload-artifact@v4
         with:
           name: ReactNativeCICD
           path: |
-            android/app/build/outputs/apk/debug/app-debug.apk
+            android/app/build/outputs/apk/debug/app.apk
 
       - name: Build RELEASE Android APK
         if: inputs.buildType == 'RELEASE'
@@ -119,10 +122,13 @@ jobs:
           cd android 
           ./gradlew assembleRelease bundleRelease
 
+      - name: Rename APK
+        run: mv android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/app.apk
+
       - name: Publish RELEASE Artifact for Android
         if: inputs.buildType == 'RELEASE'
         uses: actions/upload-artifact@v4
         with:
           name: ReactNativeCICD
           path: |
-            android/app/build/outputs/apk/release/app-release.apk
+            android/app/build/outputs/apk/release/app.apk
