@@ -154,6 +154,7 @@ jobs:
 
   build-ios:
     if: ${{ inputs.platform == 'IOS' }}
+    name : Build iOS App
     runs-on: macos-latest
 
     steps:
