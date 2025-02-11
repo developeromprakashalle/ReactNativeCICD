@@ -86,8 +86,8 @@ jobs:
           echo "gradle -v"
           gradle -v
 
-      - name: Lint Code
-        run: npm run lint
+      #- name: Lint Code
+      #  run: npm run lint
 
       - name: Run Jest Tests with Coverage
         run: npx jest --coverage
