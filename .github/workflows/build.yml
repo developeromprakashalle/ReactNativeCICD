@@ -1,4 +1,4 @@
-name: Build and Lint Android App
+name: Build React Native CI App
 #The workflow file is divided into the following sections:
 #name:  The name of the workflow.
 #on:  The event that triggers the workflow.
