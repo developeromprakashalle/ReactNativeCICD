@@ -40,10 +40,10 @@ on:
 
 jobs:
   android-build:
+    if: ${{ inputs.platform == 'ANDROID' }}
     name: Build Android APK
     #virtual machine (runner) ubuntu-latest Default, recommended for most workflows where your job will execute.
     runs-on: ubuntu-latest
-    if: inputs.platform == 'ANDROID'
 
     steps:
       - name: Checkout Repository
@@ -135,3 +135,49 @@ jobs:
           name: ReactNativeCICD-Release
           path: |
             android/app/build/outputs/apk/release/app.apk
+
+  build-ios:
+    if: ${{ inputs.platform == 'IOS' }}
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install CocoaPods
+        run: |
+          cd ios
+          pod install
+
+      - name: Build iOS App
+        env:
+          DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
+        run: |
+          cd ios
+          xcodebuild -workspace SampleRNJS.xcworkspace \
+                     -scheme SampleRNJS \
+                     -sdk iphoneos \
+                     -configuration Release \
+                     -archivePath ./build/SampleRNJS.xcarchive archive
+
+      - name: Export IPA
+        run: |
+          cd ios
+          xcodebuild -exportArchive \
+                     -archivePath ./build/SampleRNJS.xcarchive \
+                     -exportOptionsPlist exportOptions.plist \
+                     -exportPath ./build
+
+      - name: Upload iOS Build
+        uses: actions/upload-artifact@v3
+        with:
+          name: ios-build
+          path: ios/build/SampleRNJS.ipa
