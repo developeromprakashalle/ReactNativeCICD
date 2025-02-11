@@ -154,7 +154,7 @@ jobs:
 
   build-ios:
     if: ${{ inputs.platform == 'IOS' }}
-    name : Build iOS App
+    name: Build iOS App
     runs-on: macos-latest
 
     steps:
@@ -179,17 +179,17 @@ jobs:
           DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
         run: |
           cd ios
-          xcodebuild -workspace SampleRNJS.xcworkspace \
-                     -scheme SampleRNJS \
+          xcodebuild -workspace JSCICD.xcworkspace \
+                     -scheme JSCICD \
                      -sdk iphoneos \
                      -configuration Release \
-                     -archivePath ./build/SampleRNJS.xcarchive archive
+                     -archivePath ./build/JSCICD.xcarchive archive
 
       - name: Export IPA
         run: |
           cd ios
           xcodebuild -exportArchive \
-                     -archivePath ./build/SampleRNJS.xcarchive \
+                     -archivePath ./build/JSCICD.xcarchive \
                      -exportOptionsPlist exportOptions.plist \
                      -exportPath ./build
 
