@@ -106,6 +106,7 @@ jobs:
           ./gradlew assembleDebug bundleDebug
 
       - name: Publish DEBUG Artifact for Android
+        if: inputs.buildType == 'DEBUG'
         uses: actions/upload-artifact@v4
         with:
           name: ReactNativeCICD
@@ -119,6 +120,7 @@ jobs:
           ./gradlew assembleRelease bundleRelease
 
       - name: Publish RELEASE Artifact for Android
+        if: inputs.buildType == 'RELEASE'
         uses: actions/upload-artifact@v4
         with:
           name: ReactNativeCICD
