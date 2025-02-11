@@ -50,8 +50,8 @@ jobs:
 
       - name: Set Android Version
         run: |
-          VERSION_CODE=inputs.appVersionCode  # Example: 1, 2, 3...
-          VERSION_NAME=inputs.appVersion  # Example: 1.0.1, 1.0.2...
+          VERSION_CODE=${{inputs.appVersionCode}}  # Example: 1, 2, 3...
+          VERSION_NAME=${{inputs.appVersion}}  # Example: 1.0.1, 1.0.2...
 
           sed -i "s/versionCode [0-9]\+/versionCode $VERSION_CODE/" android/app/build.gradle
           sed -i 's/versionName "[0-9\.]*"/versionName "'"$VERSION_NAME"'"/' android/app/build.gradle
@@ -71,6 +71,9 @@ jobs:
           java-version: '17'
           # Ensure JDK is compatible with your React Native version
 
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Print Versions
         run: |
           echo "node -v"
@@ -85,14 +88,8 @@ jobs:
       - name: Run Jest Tests with Coverage
         run: npx jest --coverage
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
       #- name: Lint Code
       #  run: npm run lint
-
-      - name: Run Tests
-        run: npx jest --coverage
 
       - name: Run SonarQube Scanner
         run: npx sonar-scanner
