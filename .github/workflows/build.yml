@@ -71,8 +71,16 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Node.js Version
-        run: node -v # Ensures correct Node version is used
+      - name: Print Versions
+        run: |
+          echo "node -v"
+          node -v
+          echo "npm -v"
+          npm -v  
+          echo "java -version"
+          java -version
+          echo "gradle -v"
+          gradle -v
 
       - name: Run Jest Tests with Coverage
         run: npx jest --coverage
