@@ -26,17 +26,33 @@ on:
           - RELEASE
           - DEBUG
 
-      appVersionCode:
-        description: 'App version code'
+      AndroidVersionCode:
+        description: 'Android App version'
         required: true
         default: '1'
         type: number
 
-      appVersion:
-        description: 'App version'
+      BuildVersion:
+        description: 'Build version'
         required: true
         default: '1.0.0'
         type: string
+
+      IOSBundleVersion:
+        description: 'iOS Bundle version'
+        required: true
+        default: '1.0.0'
+        type: string
+
+      SetEnvironment:
+        description: 'Set Environment for the app'
+        required: true
+        default: 'DEV'
+        type: choice
+        options:
+          - DEV
+          - UAT
+          - PROD
 
 jobs:
   android-build:
@@ -51,8 +67,8 @@ jobs:
 
       - name: Set Android Version
         run: |
-          VERSION_CODE=${{inputs.appVersionCode}}  # Example: 1, 2, 3...
-          VERSION_NAME=${{inputs.appVersion}}  # Example: 1.0.1, 1.0.2...
+          VERSION_CODE=${{inputs.AndroidVersionCode}}  # Example: 1, 2, 3...
+          VERSION_NAME=${{inputs.BuildVersion}}  # Example: 1.0.1, 1.0.2...
 
           sed -i "s/versionCode [0-9]\+/versionCode $VERSION_CODE/" android/app/build.gradle
           sed -i 's/versionName "[0-9\.]*"/versionName "'"$VERSION_NAME"'"/' android/app/build.gradle
