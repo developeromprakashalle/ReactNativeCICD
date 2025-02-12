@@ -178,6 +178,7 @@ jobs:
         run: |
           /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 1.2.0" "ios/JSCICD/Info.plist"
           /usr/libexec/PlistBuddy -c "Set :CFBundleVersion 45" "ios/JSCICD/Info.plist"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier com.adcbmobiletest.mib" "ios/JSCICD/Info.plist"
 
       - name: Build iOS App
         env:
