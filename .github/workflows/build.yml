@@ -174,11 +174,11 @@ jobs:
           cd ios
           pod install
 
-      - name: Update iOS Bundle Version
-        run: |
-          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 1.2.0" "ios/JSCICD/Info.plist"
-          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion 45" "ios/JSCICD/Info.plist"
-          /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier com.adcbmobiletest.mib" "ios/JSCICD/Info.plist"
+      #- name: Update iOS Bundle Version
+      #  run: |
+       #   /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 1.2.0" "ios/JSCICD/Info.plist"
+       #   /usr/libexec/PlistBuddy -c "Set :CFBundleVersion 45" "ios/JSCICD/Info.plist"
+      #    /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier com.adcbmobiletest.mib" "ios/JSCICD/Info.plist"
 
       - name: Build iOS App
         env:
@@ -198,7 +198,9 @@ jobs:
                      -archivePath ./build/JSCICD.xcarchive \
                      -exportOptionsPlist exportOptions.plist \
                      -exportPath ./build
-                     DEVELOPMENT_TEAM=${{ secrets.DEVELOPMENT_TEAM }}
+                     DEVELOPMENT_TEAM=com.adcbmobiletest.mib
+            
+        # ${{ secrets.DEVELOPMENT_TEAM }}
 
       - name: Upload iOS Build
         uses: actions/upload-artifact@v4
